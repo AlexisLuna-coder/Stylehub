@@ -10,7 +10,7 @@
     @section('content')
     <h1>Editar usuario - Panel Admin</h1>
     @include('partials.alerts')
-    <form action="{{ route('Usuarios.update', $user }}" method="POST"> <!--NOTA. ESTO NO FUNCIONA, NO SE PORQUE-->
+    <form action="{{ route('Usuarios.update'), $Usuario }}" method="POST"> <!--NOTA. ESTO NO FUNCIONA, NO SE PORQUE-->
 
     @csrf
     @method('PUT')

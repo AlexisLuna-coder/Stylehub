@@ -15,11 +15,11 @@ class AuthController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('Usuarios.index', compact('users'));
+        return view('admin.dashboard', compact('users'));
     }
     public function edit(User $user)
     {
-        return view('Usuarios.edit', compact('user'));
+        return view('admin.dashboard', compact('user'));
     }
     
     public function update(Request $request, User $user)
@@ -41,14 +41,14 @@ class AuthController extends Controller
 
         $user->update($data);
 
-        return redirect()->route('Usuarios.index')
+        return redirect()->route('admin.dashboard')
         ->with('success','Usuario actualizado');
     }
 
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('Usuarios.index')
+        return redirect()->route('admin.dashboard')
         ->with('success','Usuario eliminado');
     }
 
