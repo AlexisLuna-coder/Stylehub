@@ -34,29 +34,29 @@
             </tr>
             </thead>
             <tbody>
-                @foreach($users as $user)
+                @foreach($user as $us)
                 <tr>
-                <td>{{ $user->id }}</td>
-                <td>{{ $user->name }}</td>
-                <td>{{ $user->apellido }}</td>
-                <td>{{ $user->materno }}</td>
-                <td>{{ $user->telefono }}</td>
-                <td>{{ $user->email }}</td>
-                <td>{{ $user->direccion }}</td>
+                <td>{{ $us->id }}</td>
+                <td>{{ $us->name }}</td>
+                <td>{{ $us->apellido }}</td>
+                <td>{{ $us->materno }}</td>
+                <td>{{ $us->telefono }}</td>
+                <td>{{ $us->email }}</td>
+                <td>{{ $us->direccion }}</td>
                 <td>
-                    @if($user->is_Admin)
+                    @if($us->is_Admin)
                         <span class="badge bg-success">Admin</span>
                     @else
                         <span class="badge bg-secondary">Usuario</span>
                     @endif
                 </td>
                 <td>
-                    <a href="{{ route('Usuarios.edit',$user) }}">
+                    <a href="{{ route('Usuarios.edit',$us) }}">
                         <button class="btn btn-warning">
                             <i class="fa-solid fa-pen-to-square"></i> Editar
                         </button>
                     </a>
-                    <form action="{{ route('Usuarios.destroy',$user) }}" method="POST" class="d-inline">
+                    <form action="{{ route('Usuarios.destroy',$us) }}" method="POST" class="d-inline">
                         @csrf
                         @method('DELETE')
                         <button 

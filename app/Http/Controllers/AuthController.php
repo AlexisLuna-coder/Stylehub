@@ -14,12 +14,12 @@ class AuthController extends Controller
     //MÉTOODS PARA EL CRUD - GENERAL
     public function index()
     {
-        $users = User::all();
-        return view('admin.dashboard', compact('users'));
+        $user = User::all();
+        return view('admin-dashboard.dashboard', compact('user'));
     }
     public function edit(User $user)
     {
-        return view('admin.dashboard', compact('user'));
+        return view('admin-dashboard.dashboard', compact('user'));
     }
     
     public function update(Request $request, User $user)
@@ -41,14 +41,14 @@ class AuthController extends Controller
 
         $user->update($data);
 
-        return redirect()->route('admin.dashboard')
+        return redirect()->route('admin-dashboard.dashboard')
         ->with('success','Usuario actualizado');
     }
 
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('admin.dashboard')
+        return redirect()->route('admin-dashboard.dashboard')
         ->with('success','Usuario eliminado');
     }
 
@@ -131,8 +131,8 @@ class AuthController extends Controller
 
     //Método para el Panel principal del administrador
     public function adminDashboard(){
-        $users = User::all();
-        return view('admin.dashboard', compact('users'));
+        $user = User::all();
+        return view('admin.dashboard', compact('user'));
     }
 }
 

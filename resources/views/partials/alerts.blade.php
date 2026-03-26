@@ -19,13 +19,14 @@
 @endif
 
 @if(session('error'))
-    //<!--ALERTA DE ERROR-->
+    <!--ALERTA DE ERROR-->
     <div id="alertaError" class="alert alert-warning alert-dismissible d-flex align-items-center fade show">
         <i class="fa-solid fa-circle-check"></i>
         <strong class = "mx-2"> Error! </strong>{{ session('error') }}
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
-    //Alerta para el manejo de errores
+    <!-- Alerta para el manejo de errores -->
+    <script>
         setTimeout(function() {
             let alertaError = document.getElementById('alertaError'); //Manejará el obj. del documento (div)
 
