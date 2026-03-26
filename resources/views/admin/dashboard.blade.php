@@ -18,8 +18,8 @@
         <hr>
 
         <h3>Gestión de usuarios</h3>
-        <a href="{{ route('Usuarios.index') }}" class="btn btn-dark">
-            Regresar
+        <a href="{{ route('registro') }}" class="btn btn-outline-dark">
+            Registrar nuevo usuario
         </a>
 
         <table class="table table-striped table-hover">
@@ -76,6 +76,11 @@
         @endif
         @endauth
         <!--ADMINISTRADOS-->
+        <a href="{{ route('Productos.index') }}">
+            <button type="button" class="btn btn-outline-dark">
+                Volver a productos
+            </button>
+        </a>
     @endsection
 </body>
 </html>

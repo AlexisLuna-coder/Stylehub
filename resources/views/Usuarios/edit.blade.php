@@ -69,7 +69,6 @@
         <a href="{{ route('Usuarios.index') }}" class="btn btn-dark">
             Regresar
         </a>
-
     </form>
 
     @endsection
