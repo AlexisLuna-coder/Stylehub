@@ -18,6 +18,9 @@
         <hr>
 
         <h3>Gestión de usuarios</h3>
+        <a href="{{ route('Usuarios.index') }}" class="btn btn-dark">
+            Regresar
+        </a>
 
         <table class="table table-striped table-hover">
             <thead>
@@ -34,7 +37,7 @@
             </tr>
             </thead>
             <tbody>
-                @foreach($user as $us)
+                @foreach($users as $us)
                 <tr>
                 <td>{{ $us->id }}</td>
                 <td>{{ $us->name }}</td>
@@ -56,7 +59,7 @@
                             <i class="fa-solid fa-pen-to-square"></i> Editar
                         </button>
                     </a>
-                    <form action="{{ route('Usuarios.destroy',$us) }}" method="POST" class="d-inline">
+                    <form action="{{ route('Usuarios.destroy', $us) }}" method="POST" class="d-inline">
                         @csrf
                         @method('DELETE')
                         <button 

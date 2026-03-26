@@ -1,14 +1,15 @@
 <?php
     use Illuminate\Support\Facades\Route;
-    use App\Http\Controllers\UsuariosController;
+    use App\Http\Controllers\UserController;
     use App\Http\Controllers\ProductosController;
     use App\Http\Controllers\AuthController;
 
     Route::get('/', function () {
         return view('welcome');
     });
-    Route::resource('Usuarios', AuthController::class);
+
     Route::resource('Productos', ProductosController::class);
+    Route::resource('Usuarios', UserController::class);
 
     //RUTAS NUEVAS - CREADAS PARA LA ASIGNACIÓN DE PRODUCTOS - 2026_03_15
     Route::get('/Productos/{id}/edit', [
@@ -19,6 +20,8 @@
     Route::middleware(['auth'])->group(function () {
         // Ruta para obtener los métodos de UsuariosController
         Route::resource('Productos', ProductosController::class);
+        Route::resource('Usuarios', UserController::class);
+
     });
 
     Route::put('Productos/{id}', [
@@ -29,19 +32,19 @@
     //RUTAS ANTERIORES - USUARIOS
     Route::get('/Usuarios/{id}/edit', [
         // UsuariosController::class, 'edit'
-        AuthController::class, 'edit'
+        UserController::class, 'edit'
     ])->name('Usuarios.edit');
 
     //RUTAS PARA POTREGER LAS RUTAS De los usuarios
     Route::middleware(['auth'])->group(function () {
         // Ruta para obtener los métodos de UsuariosController
         //Route::resource('Usuarios', UsuariosController::class);
-        Route::resource('Usuarios', AuthController::class);
+        Route::resource('Usuarios', UserController::class);
     });
 
     Route::put('Usuarios/{id}', [
         //UsuariosController::class, 'update'
-        AuthController::class, 'update'
+        UserController::class, 'update'
     ])->name('Usuarios.update');
 
     /*RUTAS PARA EL INICIO DE SESIÓN Y CERRAR SESIÓN */

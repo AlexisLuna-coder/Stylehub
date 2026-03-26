@@ -10,7 +10,7 @@
     @extends('layouts.app')
     @section('content')
     @include('partials.alerts')
-    <h1>Editar usuario : {{ $Producto->nombre }} </h1>
+    <h1>Editar producto : {{ $Producto->nombre }} </h1>
 
     <form action="{{ route('Productos.update', $Producto) }}" method="POST" enctype="multipart/form-data"> <!-- enctype="multipart/form-data" sirve para subir archivos (imágenes, documentos, etc.) desde un formulario HTML al servidor -->
         <!-- uso obligatorio para la actualizaxion para el comentario es ctrl + k + c -->
