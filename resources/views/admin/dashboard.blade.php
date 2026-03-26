@@ -18,6 +18,9 @@
         <hr>
 
         <h3>Gestión de usuarios</h3>
+        <a href="{{ route('registro') }}" class="btn btn-dark">
+            Registrar nuevo usuario
+        </a>
 
         <table class="table table-striped table-hover">
             <thead>
@@ -34,7 +37,7 @@
             </tr>
             </thead>
             <tbody>
-                @foreach($user as $us)
+                @foreach($users as $us)
                 <tr>
                 <td>{{ $us->id }}</td>
                 <td>{{ $us->name }}</td>
@@ -73,6 +76,10 @@
         @endif
         @endauth
         <!--ADMINISTRADOS-->
+
+        <a href="{{ route('Productos.index') }}" class="btn btn-dark">
+            Regresar
+        </a>
     @endsection
 </body>
 </html>
