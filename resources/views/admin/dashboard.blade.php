@@ -18,7 +18,7 @@
         <hr>
 
         <h3>Gestión de usuarios</h3>
-        <a href="{{ route('registro') }}" class="btn btn-dark">
+        <a href="{{ route('registro') }}" class="btn btn-outline-dark">
             Registrar nuevo usuario
         </a>
 
@@ -59,7 +59,7 @@
                             <i class="fa-solid fa-pen-to-square"></i> Editar
                         </button>
                     </a>
-                    <form action="{{ route('Usuarios.destroy',$us) }}" method="POST" class="d-inline">
+                    <form action="{{ route('Usuarios.destroy', $us) }}" method="POST" class="d-inline">
                         @csrf
                         @method('DELETE')
                         <button 
@@ -76,9 +76,10 @@
         @endif
         @endauth
         <!--ADMINISTRADOS-->
-
-        <a href="{{ route('Productos.index') }}" class="btn btn-dark">
-            Regresar
+        <a href="{{ route('Productos.index') }}">
+            <button type="button" class="btn btn-outline-dark">
+                Volver a productos
+            </button>
         </a>
     @endsection
 </body>

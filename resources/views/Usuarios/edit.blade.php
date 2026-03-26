@@ -14,33 +14,33 @@
 
     @include('partials.alerts')
 
-    <form action="{{ route('Usuarios.update', $user) }}" method="POST">
+    <form action="{{ route('Usuarios.update', $Usuario) }}" method="POST">
         @csrf
         @method('PUT')
 
         <div class="input-group mb-3">
             <input type="text" name="name" class="form-control"
-            value="{{ $user->name }}" required>
+            value="{{ $Usuario->name }}" required>
         </div>
 
         <div class="input-group mb-3">
             <input type="text" name="apellido" class="form-control"
-            value="{{ $user->apellido }}" required>
+            value="{{ $Usuario->apellido }}" required>
         </div>
 
         <div class="input-group mb-3">
             <input type="text" name="materno" class="form-control"
-            value="{{ $user->materno }}" required>
+            value="{{ $Usuario->materno }}" required>
         </div>
 
         <div class="input-group mb-3">
             <input type="text" name="telefono" class="form-control"
-            value="{{ $user->telefono }}" required>
+            value="{{ $Usuario->telefono }}" required>
         </div>
 
         <div class="input-group mb-3">
             <input type="email" name="email" class="form-control"
-            value="{{ $user->email }}" required>
+            value="{{ $Usuario->email }}" required>
         </div>
 
         <div class="input-group mb-3">
@@ -50,7 +50,7 @@
 
         <div class="input-group mb-3">
             <input type="text" name="direccion" class="form-control"
-            value="{{ $user->direccion }}" required>
+            value="{{ $Usuario->direccion }}" required>
         </div>
 
         <div class="form-check mb-3">
@@ -58,7 +58,7 @@
                 type="checkbox"
                 name="is_Admin"
                 value="1"
-                {{ $user->is_Admin ? 'checked' : '' }}>
+                {{ $Usuario->is_Admin ? 'checked' : '' }}>
             <label>Es administrador</label>
         </div>
 
@@ -69,7 +69,6 @@
         <a href="{{ route('Usuarios.index') }}" class="btn btn-dark">
             Regresar
         </a>
-
     </form>
 
     @endsection

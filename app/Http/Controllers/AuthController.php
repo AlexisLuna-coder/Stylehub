@@ -12,46 +12,6 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
     //MÉTOODS PARA EL CRUD - GENERAL
-    public function index()
-    {
-        $user = User::all();
-        return view('admin.dashboard', compact('user'));
-    }
-    public function edit(User $user)
-    {
-        return view('admin.dashboard', compact('user'));
-    }
-    
-    public function update(Request $request, User $user)
-    {
-        $request->validate([
-            'name'=>'required',
-            'apellido'=>'required',
-            'materno'=>'required',
-            'telefono'=>'required',
-            'email'=>'required|email',
-            'direccion'=>'required',
-        ]);
-
-        $data = $request->except('password');
-
-        if($request->password){
-            $data['password'] = Hash::make($request->password);
-        }
-
-        $user->update($data);
-
-        return redirect()->route('admin.dashboard')
-        ->with('success','Usuario actualizado');
-    }
-
-    public function destroy(User $user)
-    {
-        $user->delete();
-        return redirect()->route('admin.dashboard')
-        ->with('success','Usuario eliminado');
-    }
-
     ///////////////////////////////
     public function registerForm(){
         return view('auth.register');
@@ -131,8 +91,8 @@ class AuthController extends Controller
 
     //Método para el Panel principal del administrador
     public function adminDashboard(){
-        $user = User::all();
-        return view('admin.dashboard', compact('user'));
+        $users = User::all();
+        return view('admin.dashboard', compact('users'));
     }
 }
 

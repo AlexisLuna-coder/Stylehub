@@ -60,7 +60,9 @@
             <td>{{ $producto->codigo }}</td>
             <td>
                 @if($producto->imagen)
-                <img src="{{ asset('storage/'.$producto->imagen) }}" width="60">
+                    <img src="{{ asset('storage/'.$producto->imagen) }}" width="60">
+                @else
+                    <span class="badge bg-warning text-dark">Pendiente</span>
                 @endif
             </td>
             <td>
