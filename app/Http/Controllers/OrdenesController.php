@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Ordenes;
+use App\Models\DetalleOrden;
+use App\Models\Productos;
+use Illuminate\Support\Facades\Auth;
+
 
 class OrdenesController extends Controller
 {
@@ -11,7 +16,8 @@ class OrdenesController extends Controller
      */
     public function index()
     {
-        //
+        $ordenes = Ordenes::all();
+        return view('Ordenes.index', compact('ordenes')); //PORDÍA CAMBIAR LA RUTA DE LA VISTA SI ES NECESARIO 2026-04-07
     }
 
     /**
@@ -19,7 +25,8 @@ class OrdenesController extends Controller
      */
     public function create()
     {
-        //
+        $productos = Productos::all();
+        return view('Ordenes.create', compact('productos')); //PORDÍA CAMBIAR LA RUTA DE LA VISTA SI ES NECESARIO 2026-04-07
     }
 
     /**
@@ -27,7 +34,41 @@ class OrdenesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'direccion_envio' => 'required',
+            'metodo_pago' => 'required'
+        ]);
+
+        $orden = Ordenes::create([
+            'user_id' => Auth::id(),
+            'fecha' => now(),
+            'total' => 0,
+            'estado' => 'Pendiente',
+            'direccion_envio' => $request->direccion_envio,
+            'metodo_pago' => $request->metodo_pago
+        ]);
+
+        $total = 0;
+
+        foreach($request->productos as $producto_id => $cantidad){
+            if($cantidad > 0){
+                $producto = Productos::find($producto_id);
+
+                DetalleOrden::create([
+                    'orden_id' => $orden->id,
+                    'producto_id' => $producto_id,
+                    'cantidad' => $cantidad,
+                    'precio' => $producto->precio
+                ]);
+
+                $total += $producto->precio * $cantidad;
+            }
+        }
+
+        $orden->update(['total' => $total]);
+
+        return redirect()->route('Ordenes.index') //ESTA DIRECCIÓN - ROUTE PODRA CAMBIAR (2026-04-07) NOTA. DEBERA SER LA RUTA DONDE SE MUESTREN LAS ORDENES, PUEDE SER LA MISMA VISTA DE INDEX O UNA NUEVA VISTA PARA MOSTRAR LA ORDEN RECIEN CREADA
+            ->with('success', 'Orden creada correctamente');
     }
 
     /**
@@ -39,26 +80,35 @@ class OrdenesController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * FORMUALRIO
      */
-    public function edit(string $id)
+    public function edit(Ordenes $orden)
     {
-        //
+        return view('Ordenes.edit', compact('orden'));
+    }
+
+    public function update(Request $request, Ordenes $orden)
+    {
+        $request->validate([
+            'estado' => 'required',
+            'direccion_envio' => 'required',
+            'metodo_pago' => 'required', 
+        ]);
+
+        $orden->update($request->all());
+
+        return redirect()->route('Ordenes.index')
+            ->with('success', 'Orden actualizada');
     }
 
     /**
-     * Update the specified resource in storage.
+     * ELIMINACIÓN
      */
-    public function update(Request $request, string $id)
+    public function destroy(Ordenes $orden)
     {
-        //
-    }
+        $orden->delete();
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return redirect()->route('Ordenes.index')
+            ->with('success', 'Orden eliminada');
     }
 }
