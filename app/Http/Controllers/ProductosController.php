@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Usuarios;
+//use App\Models\Usuarios;
 use App\Models\Productos;
 use App\Models\User;
 
@@ -58,16 +58,13 @@ class ProductosController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * FUNCIONES PARA HACER LA MODIFICACIÓN DE LOS REGISTROS
      */
     public function edit(Productos $Producto)
     {
         return view('Productos.edit', compact('Producto'));   
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Productos $Producto)
     {
         $request->validate([
