@@ -11,11 +11,15 @@
         <h1><center>CONSULTA DE PRODUCTOS - STYLEHUB</center></h1>
         <br>
         <div class="d-flex justify-content-end mb-2">
-            <a href="{{ route('Productos.create') }}">
-                <button type="button" class="btn btn-outline-dark me-3">
-                    <i class="fa-solid fa-plus"></i> Nuevo producto
-                </button>
-            </a>
+            @auth
+                @if(auth()->user()->is_Admin || auth()->user()->user_Type == 'gerente' || auth()->user()->user_Type == 'trabajador')
+                    <a href="{{ route('Productos.create') }}">
+                        <button type="button" class="btn btn-outline-dark me-3">
+                            <i class="fa-solid fa-plus"></i> Nuevo producto
+                        </button>
+                    </a>
+                @endif
+            @endauth
             <form action=" {{ route('cerrar') }}" method="POST"> 
                 @csrf 
                 <button class="btn btn-outline-danger me-3"> 
@@ -24,11 +28,11 @@
             </form>
             <!--verificar si la sesión esta activa--> 
             @auth 
-            @if(auth()->user()->is_Admin) 
-                <a href="{{ route('admin-dashboard') }}" class="btn btn-outline-secondary me-3 mb-3"> 
-                    <i class="fa-solid fa-gear"></i> Panel Admin 
-                </a> 
-            @endif 
+                @if(auth()->user()->is_Admin) 
+                    <a href="{{ route('admin-dashboard') }}" class="btn btn-outline-secondary me-3 mb-3"> 
+                        <i class="fa-solid fa-gear"></i> Panel Admin 
+                    </a> 
+                @endif 
             @endauth 
         </div>
         @include('partials.alerts')
@@ -45,7 +49,11 @@
                 <th>Código</th>
                 <th>Imagen</th>
                 <th>Estado</th>
-                <th>Acciones</th>
+                @auth
+                @if(auth()->user()->is_Admin || auth()->user()->user_Type == 'gerente' || auth()->user()->user_Type == 'trabajador')
+                    <th>Acciones</th>
+                @endif
+                @endauth
             </tr>
         </thead>
         <tbody>
@@ -73,22 +81,25 @@
                 @endif
             </td>
                 <td>
-                    <a href="{{ route('Productos.edit', $producto) }}">
-                    <button class="btn btn-warning">
-                    <i class="fa-solid fa-pen-to-square"></i> Editar
-                    </button>
-                </a>
-
-                <form action="{{ route('Productos.destroy', $producto) }}" method="POST" class="d-inline">
-                    @csrf
-                    @method('DELETE')
-                    <button 
-                    class="btn btn-danger"
-                    onclick="return confirm('¿Eliminar el producto?')">
-                    <i class="fa-solid fa-trash"></i> Eliminar
-                    </button>
-                </form>
-            </td>
+                    @auth
+                    @if(auth()->user()->is_Admin || auth()->user()->user_Type == 'gerente' || auth()->user()->user_Type == 'trabajador')
+                        <a href="{{ route('Productos.edit', $producto) }}">
+                            <button class="btn btn-warning">
+                                <i class="fa-solid fa-pen-to-square"></i> Editar
+                            </button>
+                        </a>
+                        <form action="{{ route('Productos.destroy', $producto) }}" method="POST" class="d-inline">
+                            @csrf
+                            @method('DELETE')
+                            <button 
+                            class="btn btn-danger"
+                            onclick="return confirm('¿Eliminar el producto?')">
+                                <i class="fa-solid fa-trash"></i> Eliminar
+                            </button>
+                        </form>
+                    @endif
+                    @endauth
+                </td>
             </tr>
             @endforeach
             </tbody>

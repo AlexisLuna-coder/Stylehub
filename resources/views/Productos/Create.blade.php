@@ -43,7 +43,8 @@
 
         <div class="input-group mb-3">
             <span class="input-group-text"><i class="fa-solid fa-barcode"></i></span>
-            <input type="text" name="codigo" placeholder="Código del producto" class="form-control">
+            <input type="text" name="codigo" placeholder="Código del producto [ej. ABCZ-000]" class="form-control"
+            pattern="[a-zA-Z]{4}-[0-9]{3}" title="ABCZ-000"required>
         </div>
 
         <div class="input-group mb-3">

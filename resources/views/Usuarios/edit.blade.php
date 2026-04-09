@@ -53,6 +53,24 @@
             value="{{ $Usuario->direccion }}" required>
         </div>
 
+        <div class="input-group mb-3">
+            <label class="input-group-text">Tipo de usuario</label>
+
+            <select name="user_Type" class="form-control" required>
+                <option value="cliente" {{ $Usuario->user_Type == 'cliente' ? 'selected' : '' }}>
+                    Cliente
+                </option>
+
+                <option value="gerente" {{ $Usuario->user_Type == 'gerente' ? 'selected' : '' }}>
+                    Gerente
+                </option>
+
+                <option value="trabajador" {{ $Usuario->user_Type == 'trabajador' ? 'selected' : '' }}>
+                    Trabajador
+                </option>
+            </select>
+        </div>
+
         <div class="form-check mb-3">
             <input class="form-check-input"
                 type="checkbox"

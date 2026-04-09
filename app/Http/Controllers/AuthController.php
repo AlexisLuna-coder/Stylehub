@@ -90,9 +90,19 @@ class AuthController extends Controller
     }
 
     //Método para el Panel principal del administrador
-    public function adminDashboard(){
+    // public function adminDashboard(){
+    //     $users = User::all();
+    //     return view('admin.dashboard', compact('users'));
+    // }
+    public function adminDashboard()
+    {
         $users = User::all();
-        return view('admin.dashboard', compact('users'));
+
+        $gerentes = User::where('user_Type', 'gerente')->get();
+        $trabajadores = User::where('user_Type', 'trabajador')->get();
+        $clientes = User::where('user_Type', 'cliente')->get();
+
+        return view('admin.dashboard', compact('users','gerentes','trabajadores','clientes'));
     }
 }
 

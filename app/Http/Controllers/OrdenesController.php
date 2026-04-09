@@ -26,7 +26,8 @@ class OrdenesController extends Controller
     public function create()
     {
         $productos = Productos::all();
-        return view('Ordenes.create', compact('productos')); //PORDÍA CAMBIAR LA RUTA DE LA VISTA SI ES NECESARIO 2026-04-07
+        $usuarios = User::all();
+        return view('Ordenes.create', compact('productos','usuarios')); //PORDÍA CAMBIAR LA RUTA DE LA VISTA SI ES NECESARIO 2026-04-07
     }
 
     /**
@@ -39,12 +40,23 @@ class OrdenesController extends Controller
             'metodo_pago' => 'required'
         ]);
 
+        //permite verificar que la cantidad solicitada no exceda el stock disponible antes de crear la orden
+        foreach($request->productos as $producto_id => $cantidad){
+            if($cantidad > 0){
+                $producto = Productos::find($producto_id);
+                if($cantidad > $producto->stock){
+                    return redirect()->back()
+                        ->with('warning', 'No se puede agregar "' . $producto->nombre . '" ya que no se tiene suficiente stock');
+                }
+            }
+        }
+
         $orden = Ordenes::create([
-            'user_id' => Auth::id(),
+            'user_id' => ($request->user_id ?? Auth::id()),
             'fecha' => now(),
             'total' => 0,
             'estado' => 'Pendiente',
-            'direccion_envio' => $request->direccion_envio,
+            'direccion_envio' => $request->direccion_envio ?? Auth::user()->direccion,
             'metodo_pago' => $request->metodo_pago
         ]);
 
@@ -60,6 +72,9 @@ class OrdenesController extends Controller
                     'cantidad' => $cantidad,
                     'precio' => $producto->precio
                 ]);
+                //QUITAR STOCK
+                $producto->stock -= $cantidad;
+                $producto->save();
 
                 $total += $producto->precio * $cantidad;
             }

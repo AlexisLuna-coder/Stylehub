@@ -34,6 +34,12 @@ class ProductosController extends Controller
      */
     public function store(Request $request)
     {
+        $rutaImagen = null;
+
+        if($request->hasFile('imagen')){
+            $rutaImagen = $request->file('imagen')->store('productos','public');
+        }
+
         Productos::create([
             'nombre'=> $request->nombre,
             'descripcion'=> $request->descripcion,
@@ -41,7 +47,7 @@ class ProductosController extends Controller
             'stock'=> $request->stock,            
             'categoria'=> $request->categoria,
             'codigo'=> $request->codigo,
-            'imagen'=> $request->imagen,
+            'imagen'=> $rutaImagen,
             'estado'=> $request->estado,
         ]);
 
@@ -78,7 +84,14 @@ class ProductosController extends Controller
             'estado'=> 'required',     
         ]);
 
-        $Producto->update($request->all());
+        $data = $request->all();
+        if($request->hasFile('imagen')){
+            $data['imagen'] = $request->file('imagen')->store('productos','public');
+        } else {
+            unset($data['imagen']); 
+        }
+
+        $Producto->update($data);
 
         return redirect()->route('Productos.index')
             ->with('success', 'Registro actualizado');

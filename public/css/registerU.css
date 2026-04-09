@@ -1,0 +1,197 @@
+/* ===== FUENTE PREMIUM ===== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ===== CONTENEDOR GENERAL ===== */
+.register-wrapper {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(120deg, #1e2f2b, #2c3e50, #dcd7c9);
+}
+
+/* ===== LAYOUT ===== */
+.register-wrapper {
+    display: flex;
+    gap: 80px;
+    padding: 40px;
+}
+
+/* ===== PLAYERA ===== */
+.shirt-side {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    animation: floatShirt 5s ease-in-out infinite;
+}
+
+.shirt-img {
+    width: 450px;
+    max-width: 500px;
+
+    filter: drop-shadow(0 30px 60px rgba(0,0,0,0.5));
+    transition: 0.4s;
+}
+
+/* HOVER PLAYERA */
+.shirt-img:hover {
+    transform: scale(1.06) rotate(-1deg);
+}
+
+/* ANIMACIÓN */
+@keyframes floatShirt {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-18px); }
+    100% { transform: translateY(0); }
+}
+
+/* ===== TARJETA ===== */
+.register-container {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(18px);
+
+    padding: 45px;
+    width: 420px;
+
+    border-radius: 22px;
+
+    border: 1px solid rgba(255,255,255,0.2);
+
+    box-shadow: 
+        0 30px 80px rgba(0,0,0,0.6),
+        inset 0 0 10px rgba(255,255,255,0.1);
+
+    animation: fadeIn 1s ease;
+    transition: 0.3s;
+}
+
+/* HOVER TARJETA */
+.register-container:hover {
+    transform: translateY(-6px);
+    box-shadow: 
+        0 40px 100px rgba(0,0,0,0.8);
+}
+
+/* ===== ANIMACIÓN ===== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ===== TITULO ===== */
+.register-container h1 {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 25px;
+
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* ===== INPUT GROUP ===== */
+.input-group {
+    display: flex;
+    align-items: center;
+
+    background: rgba(255,255,255,0.07);
+    border-radius: 14px;
+    margin-bottom: 15px;
+
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: 0.3s;
+}
+
+/* ICONO */
+.input-group span {
+    padding: 12px;
+    color: #d4af37; /* dorado elegante */
+}
+
+/* INPUT */
+.input-group input {
+    flex: 1;
+    padding: 14px;
+    border: none;
+    outline: none;
+
+    background: transparent;
+    color: #ffffff;
+
+    font-size: 14px;
+}
+
+/* PLACEHOLDER */
+.input-group input::placeholder {
+    color: #cfcfcf;
+}
+
+/* FOCUS */
+.input-group:focus-within {
+    border: 1px solid #d4af37;
+    box-shadow: 0 0 12px rgba(212,175,55,0.5);
+    background: rgba(255,255,255,0.1);
+}
+
+/* ===== BOTÓN ===== */
+.btn-main {
+    width: 100%;
+    padding: 14px;
+
+    border: none;
+    border-radius: 14px;
+
+    background: linear-gradient(45deg, #d4af37, #f1d27a);
+    color: black;
+
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-size: 15px;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* HOVER */
+.btn-main:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(212,175,55,0.7);
+}
+
+/* ===== TEXTO ===== */
+.register-container p {
+    text-align: center;
+    margin-top: 18px;
+    color: #dddddd;
+    font-size: 14px;
+}
+
+/* ===== LINK MEJORADO ===== */
+.register-container a {
+    color: #ffd700;
+    font-weight: 600;
+    text-decoration: none;
+
+    border-bottom: 2px solid #ffd700;
+    padding-bottom: 2px;
+
+    transition: 0.3s;
+}
+
+.register-container a:hover {
+    color: #ffffff;
+    border-bottom: 2px solid white;
+}

@@ -1,83 +1,97 @@
-<?php
+    <?php
     use Illuminate\Support\Facades\Route;
     use App\Http\Controllers\UserController;
     use App\Http\Controllers\ProductosController;
     use App\Http\Controllers\AuthController;
+    use App\Http\Controllers\OrdenesController;
+    use App\Http\Controllers\DetalleOrdenController;
 
+    //esto es para todos
     Route::get('/', function () {
         return view('welcome');
     });
 
-    Route::resource('Productos', ProductosController::class);
-    Route::resource('Usuarios', UserController::class);
+    // REGISTRO
+    Route::get('/registro', [AuthController::class, 'registerForm'])->name('registro');
+    Route::post('/registro', [AuthController::class, 'register'])->name('registro.store');
 
-    //RUTAS NUEVAS - CREADAS PARA LA ASIGNACIÓN DE PRODUCTOS - 2026_03_15
-    Route::get('/Productos/{id}/edit', [
-        ProductosController::class, 'edit'
-    ])->name('Productos.edit');
+    // LOGIN
+    Route::get('/acceso', [AuthController::class, 'loginForm'])->name('acceso');
+    Route::post('/acceso', [AuthController::class, 'login'])->name('acceso.store');
 
-    //RUTAS PARA POTREGER LAS RUTAS De los usuarios
+    // LOGOUT
+    Route::post('/cerrar', [AuthController::class, 'logout'])->name('cerrar');
+
+
+    //SOLAMENTE USUARIOS AUTENTICADOS (clientes, admin, trabajadores,...)
     Route::middleware(['auth'])->group(function () {
-        // Ruta para obtener los métodos de UsuariosController
+        // PRODUCTOS (todos entran, PERO controlas en vista/controller)
         Route::resource('Productos', ProductosController::class);
-        Route::resource('Usuarios', UserController::class);
+        // ORDENES (todos pueden usar)
+        Route::resource('Ordenes', OrdenesController::class)
+            ->parameters(['Ordenes' => 'orden']);
+        // DETALLES
+        Route::resource('DetallesOrden', DetalleOrdenController::class);
 
+        //
+        // -------- ORDENES --------
+        // Mostrar formulario crear orden
+        Route::get('/Ordenes/create', [
+            OrdenesController::class, 'create'
+        ])->name('Ordenes.create');
+        // Guardar orden
+        Route::post('/Ordenes', [
+            OrdenesController::class, 'store'
+        ])->name('Ordenes.store');
+        // Editar orden
+        Route::get('/Ordenes/{orden}/edit', [
+            OrdenesController::class, 'edit'
+        ])->name('Ordenes.edit');
+        // Actualizar orden
+        Route::put('/Ordenes/{orden}', [
+            OrdenesController::class, 'update'
+        ])->name('Ordenes.update');
+        // Eliminar orden
+        Route::delete('/Ordenes/{orden}', [
+            OrdenesController::class, 'destroy'
+        ])->name('Ordenes.destroy');
+        // -------- DETALLE ORDEN --------
+        // Mostrar todos los detalles
+        Route::get('/DetallesOrden', [
+            detalleOrdenController::class, 'index'
+        ])->name('DetallesOrden.index');
+        // Crear detalle
+        Route::get('/DetallesOrden/create', [
+            detalleOrdenController::class, 'create'
+        ])->name('DetallesOrden.create');
+        // Guardar detalle
+        Route::post('/DetallesOrden', [
+            detalleOrdenController::class, 'store'
+        ])->name('DetallesOrden.store');
+        // Editar detalle
+        Route::get('/DetallesOrden/{detalleOrden}/edit', [
+            detalleOrdenController::class, 'edit'
+        ])->name('DetallesOrden.edit');
+        // Actualizar detalle
+        Route::put('/DetallesOrden/{detalleOrden}', [
+            detalleOrdenController::class, 'update'
+        ])->name('DetallesOrden.update');
+        // Eliminar detalle
+        Route::delete('/DetallesOrden/{detalleOrden}', [
+            detalleOrdenController::class, 'destroy'
+        ])->name('DetallesOrden.destroy');
+        //RUTAS NUEVAS - CREADAS PARA LA ASIGNACIÓN DE PRODUCTOS - 2026_03_15
+        Route::get('/Productos/{id}/edit', [
+            ProductosController::class, 'edit'
+        ])->name('Productos.edit');
+        Route::put('/Productos/{id}', [
+            ProductosController::class, 'update'
+        ])->name('Productos.update');
     });
 
-    Route::put('Productos/{id}', [
-        ProductosController::class, 'update'
-    ])->name('Productos.update');
-
-    /****************************/
-    //RUTAS ANTERIORES - USUARIOS
-    Route::get('/Usuarios/{id}/edit', [
-        // UsuariosController::class, 'edit'
-        UserController::class, 'edit'
-    ])->name('Usuarios.edit');
-
-    //RUTAS PARA POTREGER LAS RUTAS De los usuarios
-    Route::middleware(['auth'])->group(function () {
-        // Ruta para obtener los métodos de UsuariosController
-        //Route::resource('Usuarios', UsuariosController::class);
+    //Protección de rutas para ADMIN
+    Route::middleware(['auth','admin'])->group(function () {
+        Route::get('/admin-dashboard', [AuthController::class, 'adminDashboard']) //Clase y nombre del método
+            ->name('admin-dashboard');
         Route::resource('Usuarios', UserController::class);
-    });
-
-    Route::put('Usuarios/{id}', [
-        //UsuariosController::class, 'update'
-        UserController::class, 'update'
-    ])->name('Usuarios.update');
-
-    /*RUTAS PARA EL INICIO DE SESIÓN Y CERRAR SESIÓN */
-
-    //RUTA PARA MOSTRAR EL FORMULARIO DE REGISTRO
-    Route::get('/registro', [
-        AuthController::class, 'registerForm'
-    ])->name('registro');
-
-    Route::post('/registro', [
-        AuthController::class, 'register'
-    ])->name('registro.store');
-
-    //RUTAS PARA MOSTRAR EL FORMULARIO DE INICIO DE SESIÓN
-    Route::get('/acceso',[
-        AuthController::class, 'loginForm'
-    ])->name('acceso');
-
-    //Ruta para verificar el inicio de sesión
-    //post enviar informacion
-    Route::post('/acceso', [
-        AuthController::class, 'login'
-    ])->name('acceso.store');
-    
-    //Ruta para cerrar sesión
-    //post manda informacion
-    Route::post('/cerrar', [
-        AuthController::class, 'logout'
-    ])->name('cerrar');
-
-    //RUTAS PARA EL ADMINSTRADOR
-    Route::middleware(['auth', 'admin'])->group(function () {
-        Route::get('/admin-dashboard',[
-            AuthController::class, 'adminDashboard'
-        ])->name('admin-dashboard');
     });

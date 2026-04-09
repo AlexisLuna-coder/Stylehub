@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('detalle_orden', function (Blueprint $table) {
+        Schema::create('detalle_ordens', function (Blueprint $table) {
             $table->id();
             // Relación con orden
             $table->foreignId('orden_id')->constrained('ordenes')

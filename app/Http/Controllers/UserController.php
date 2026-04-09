@@ -58,6 +58,7 @@ class UserController extends Controller
             'telefono'=>'required',
             'email'=>'required|email',
             'direccion'=>'required',
+            'user_Type'=>'required'
         ]);
 
         $data = $request->except('password');

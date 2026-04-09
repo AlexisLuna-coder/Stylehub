@@ -3,62 +3,95 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\DetalleOrden;
+use App\Models\Ordenes;
+use App\Models\Productos;
 
-class detalleOrdenController extends Controller
+class DetalleOrdenController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Mostrar todos los detalles de órdenes
      */
     public function index()
     {
-        //
+        $detalles = DetalleOrden::with(['orden', 'producto'])->get();
+        return view('DetalleOrden.index', compact('detalles'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Mostrar formulario para crear detalle
      */
     public function create()
     {
-        //
+        $ordenes = Ordenes::all();
+        $productos = Productos::all();
+
+        return view('DetalleOrden.create', compact('ordenes', 'productos'));
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Guardar detalle de orden
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'orden_id' => 'required',
+            'producto_id' => 'required',
+            'cantidad' => 'required|integer|min:1',
+            'precio' => 'required|numeric|min:0'
+        ]);
+
+        DetalleOrden::create($request->all());
+
+        return redirect()->route('DetalleOrden.index')
+            ->with('success', 'Detalle de orden creado');
     }
 
     /**
-     * Display the specified resource.
+     * Mostrar un detalle específico
      */
-    public function show(string $id)
+    public function show(DetalleOrden $detalleOrden)
     {
-        //
+        return view('DetalleOrden.show', compact('detalleOrden'));
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Formulario de edición
      */
-    public function edit(string $id)
+    public function edit(DetalleOrden $detalleOrden)
     {
-        //
+        $ordenes = Ordenes::all();
+        $productos = Productos::all();
+
+        return view('DetalleOrden.edit', compact('detalleOrden', 'ordenes', 'productos'));
     }
 
     /**
-     * Update the specified resource in storage.
+     * Actualizar detalle
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, DetalleOrden $detalleOrden)
     {
-        //
+        $request->validate([
+            'orden_id' => 'required',
+            'producto_id' => 'required',
+            'cantidad' => 'required|integer|min:1',
+            'precio' => 'required|numeric|min:0'
+        ]);
+
+        $detalleOrden->update($request->all());
+
+        return redirect()->route('DetalleOrden.index')
+            ->with('success', 'Detalle actualizado');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Eliminar detalle
      */
-    public function destroy(string $id)
+    public function destroy(DetalleOrden $detalleOrden)
     {
-        //
+        $detalleOrden->delete();
+
+        return redirect()->route('DetalleOrden.index')
+            ->with('success', 'Detalle eliminado');
     }
 }

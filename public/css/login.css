@@ -1,0 +1,213 @@
+/* ===== RESET ===== */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* ===== CONTENEDOR ===== */
+.login-wrapper {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    padding-left: 8%;
+
+    background: url('/storage/fondos/VestidoLogin.png') no-repeat center;
+    background-size: cover;
+}
+
+/* ===== OVERLAY ===== */
+.login-wrapper::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to right,
+        rgba(0,0,0,0.6),
+        rgba(0,0,0,0.3),
+        rgba(0,0,0,0.1)
+    );
+}
+
+.particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.particles span {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #d4af37;
+    border-radius: 50%;
+    opacity: 0.7;
+
+    animation: float 10s linear infinite;
+}
+
+/* posiciones aleatorias */
+.particles span:nth-child(1){ left:10%; animation-duration:8s;}
+.particles span:nth-child(2){ left:20%; animation-duration:12s;}
+.particles span:nth-child(3){ left:30%; animation-duration:9s;}
+.particles span:nth-child(4){ left:40%; animation-duration:14s;}
+.particles span:nth-child(5){ left:50%; animation-duration:10s;}
+.particles span:nth-child(6){ left:60%; animation-duration:11s;}
+.particles span:nth-child(7){ left:70%; animation-duration:13s;}
+.particles span:nth-child(8){ left:80%; animation-duration:9s;}
+.particles span:nth-child(9){ left:90%; animation-duration:15s;}
+.particles span:nth-child(10){ left:95%; animation-duration:12s;}
+
+@keyframes float {
+    from {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+    20% {
+        opacity: 0.8;
+    }
+    to {
+        transform: translateY(-10vh);
+        opacity: 0;
+    }
+}
+
+/* ===== TARJETA ===== */
+.login-container {
+    position: relative;
+    z-index: 2;
+
+    width: 360px;
+    padding: 45px;
+
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(255,255,255,0.2);
+
+    box-shadow: 
+        0 20px 60px rgba(0,0,0,0.5),
+        inset 0 0 10px rgba(255,255,255,0.1);
+
+    animation: fadeInSmooth 1s ease;
+    transition: all 0.4s ease;
+}
+
+.login-container:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 
+        0 30px 80px rgba(0,0,0,0.7),
+        0 0 25px rgba(212,175,55,0.4);
+}
+
+/* ===== ANIMACIÓN ===== */
+@keyframes fadeInSmooth {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ===== LOGO ===== */
+.logo {
+    display: block;
+    margin: 0 auto 15px;
+    width: 65px;
+
+    animation: logoFade 1.2s ease;
+}
+
+@keyframes logoFade {
+    from {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== TITULO ===== */
+.login-container h1 {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+}
+
+/* ===== INPUTS ===== */
+.login-container input {
+    width: 100%;
+    padding: 13px;
+    margin-bottom: 15px;
+
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.3);
+
+    background: rgba(255,255,255,0.12);
+    color: white;
+
+    transition: all 0.3s ease;
+}
+
+.login-container input::placeholder {
+    color: #ddd;
+}
+
+.login-container input:focus {
+    border: 1px solid #d4af37;
+    box-shadow: 0 0 12px rgba(212,175,55,0.6);
+    background: rgba(255,255,255,0.18);
+}
+
+/* ===== BOTÓN ===== */
+.login-container button {
+    width: 100%;
+    padding: 13px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: linear-gradient(45deg, #d4af37, #f5d76e);
+    color: black;
+
+    font-weight: bold;
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+.login-container button:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 0 18px rgba(212,175,55,0.8);
+}
+
+/* TEXTO */
+.login-container p {
+    text-align: center;
+    margin-top: 15px;
+    color: #eee;
+}
+
+.login-container a {
+    color: #f5d76e;
+    font-weight: bold;
+}
+
+.login-container a:hover {
+    color: white;
+}
