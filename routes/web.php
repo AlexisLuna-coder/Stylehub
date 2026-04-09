@@ -11,6 +11,12 @@
         return view('welcome');
     });
 
+    //RUTA PARA MOSTRAR LOS PRODUCTOS DESDE LA API EXTERNA
+    Route::get('/home', [
+        ProductosController::class, 'home'
+    ])->name('home');
+    
+
     // REGISTRO
     Route::get('/registro', [AuthController::class, 'registerForm'])->name('registro');
     Route::post('/registro', [AuthController::class, 'register'])->name('registro.store');

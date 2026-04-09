@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Productos;
 use App\Models\User;
 
+use Illuminate\Support\Facades\Http; //2026-04-09 - IMPLEMENTACIÓN DE HTTP PARA CONSUMO DE API EXTERNA
+
 class ProductosController extends Controller
 {
     /**
@@ -106,5 +108,38 @@ class ProductosController extends Controller
         return redirect()->route('Productos.index')
         ->with('success', 'Registro eliminado exitosamente');
         //error o fail
+    }
+
+    //MÉTODO PARA IMPLEMENTAR EL CONSUMO DE LA API EXTERNA
+    public function home(Request $request) {
+        // // 1. Obtener productos de una categoría específica (ej. Clothes - ID: 1)
+        // $ropa = Http::get('https://api.escuelajs.co/api/v1/products', [
+        //     'categoryId' => 1,
+        //     'limit' => 5
+        // ])->json() ?? [];
+
+        // // 2. Obtener productos de otra categoría (ej. Electronics o Shoes - ID: 2)
+        // $zapatos = Http::get('https://api.escuelajs.co/api/v1/products', [
+        //     'categoryId' => 2,
+        //     'limit' => 5
+        // ])->json() ?? [];
+
+        // return view('Productos.home', compact('ropa', 'zapatos'));
+
+        $filtros = [
+            'title'     => $request->query('titulo'),
+            'price_min' => $request->query('min'),
+            'price_max' => $request->query('max'),
+            'categoryId'=> $request->query('categoria'),
+        ];
+
+        // Limpiamos los filtros nulos para no enviarlos vacíos
+        $query = array_filter($filtros);
+
+        // Hacemos la petición con los parámetros dinámicos
+        $resultados = Http::get('https://api.escuelajs.co/api/v1/products/', $query)->json() ?? [];
+
+        return view('Productos.home', compact('resultados'));
+
     }
 }
