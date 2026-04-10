@@ -110,36 +110,21 @@ class ProductosController extends Controller
         //error o fail
     }
 
-    //MÉTODO PARA IMPLEMENTAR EL CONSUMO DE LA API EXTERNA
+    //MÉTODO PARA IMPLEMENTAR EL CONSUMO DE LA API EXTERNA (ROPA Y ZAPATOS)
     public function home(Request $request) {
-        // // 1. Obtener productos de una categoría específica (ej. Clothes - ID: 1)
-        // $ropa = Http::get('https://api.escuelajs.co/api/v1/products', [
-        //     'categoryId' => 1,
-        //     'limit' => 5
-        // ])->json() ?? [];
-
-        // // 2. Obtener productos de otra categoría (ej. Electronics o Shoes - ID: 2)
-        // $zapatos = Http::get('https://api.escuelajs.co/api/v1/products', [
-        //     'categoryId' => 2,
-        //     'limit' => 5
-        // ])->json() ?? [];
-
-        // return view('Productos.home', compact('ropa', 'zapatos'));
-
-        $filtros = [
-            'title'     => $request->query('titulo'),
-            'price_min' => $request->query('min'),
-            'price_max' => $request->query('max'),
-            'categoryId'=> $request->query('categoria'),
-        ];
-
-        // Limpiamos los filtros nulos para no enviarlos vacíos
-        $query = array_filter($filtros);
-
-        // Hacemos la petición con los parámetros dinámicos
-        $resultados = Http::get('https://api.escuelajs.co/api/v1/products/', $query)->json() ?? [];
-
-        return view('Productos.home', compact('resultados'));
-
+        // Petición estricta para obtener Ropa (Clothes -> ID: 1)
+        $ropa = Http::get('https://api.escuelajs.co/api/v1/products', [
+            'categoryId' => 1,
+            'offset' => 0,
+            'limit' => 16 // Traemos hasta 16 prendas
+        ])->json() ?? [];
+        // Petición estricta para obtener Zapatos (Shoes -> ID: 4)
+        $zapatos = Http::get('https://api.escuelajs.co/api/v1/products', [
+            'categoryId' => 4,
+            'offset' => 0,
+            'limit' => 10 // Traemos hasta 10 zapatos
+        ])->json() ?? [];
+        // Retornamos la vista enviando ambos arreglos por separado
+        return view('Productos.home', compact('ropa', 'zapatos'));
     }
 }

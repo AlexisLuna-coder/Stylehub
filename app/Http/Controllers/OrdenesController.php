@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Ordenes;
 use App\Models\DetalleOrden;
 use App\Models\Productos;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 

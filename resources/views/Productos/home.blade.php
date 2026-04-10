@@ -3,66 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
     <title>Catálogo Externo - Stylehub</title>
 </head>
 <body>    
     <div class="main-container">
+        
         <aside class="sidebar">
-            <h2 class="logo">Stylehub</h2>
-
-            <nav class="">
+            <div class="logo-container">
+                <img src="{{ asset('img/logo2-vestido-SF.png') }}" alt="Logo de Stylehub">
+                <h2 class="logo">Stylehub</h2>
+            </div>
+            <nav>
                 <a href="{{ route('home') }}">Inicio</a>
-                <a href="#">Favoritos</a>
-                <a href="#">Mis compras</a>
-                <a href="#">Explorar</a>
-                <a href="#">Configuración</a>
+                <a href="#ropa">Ropa en Tendencia</a>
+                <a href="#zapatos">Calzado Exclusivo</a>
+                
+                @guest
+                    <a href="{{ route('acceso') }}">Iniciar Sesión</a>
+                    <a href="{{ route('registro') }}">Registrarse</a>
+                @endguest
+
+                @auth
+                    <a href="{{ route('Ordenes.create') }}">Registrar Pedidos</a>
+                    
+                    @if(Auth::user()->is_Admin == 1)
+                        <a href="{{ route('admin-dashboard') }}">Panel de Admin</a>
+                    @else
+                        <a href="{{ route('Productos.index') }}">Inventario / Productos</a>
+                    @endif
+                @endauth
             </nav>
-            <a href="{{ route('admin-dashboard') }}" class="logout">Volver al Panel</a>
+
+            @auth
+            <div class="logout-container">
+                <form action="{{ route('cerrar') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="logout">Cerrar sesión</button>
+                </form>
+            </div>
+            @endauth
         </aside>
 
         <main class="content">
+            
             <header class="topbar">
-                <form action="{{ route('home') }}" method="GET" class="filter-form">
-                    <input type="text" name="titulo" placeholder="Buscar producto..." value="{{ request('titulo') }}">
-                    <input type="number" name="min" placeholder="Precio Mín" value="{{ request('min') }}">
-                    <input type="number" name="max" placeholder="Precio Máx" value="{{ request('max') }}">
-                    <select name="categoria">
-                        <option value="">Categorías</option>
-                        <option value="1">Ropa</option>
-                        <option value="2">Electrónica</option>
-                        <option value="3">Muebles</option>
-                        <option value="4">Zapatos</option>
-                    </select>
-                    <button type="submit" class="more-btn">Filtrar</button>
-                </form>
+                <div class="menu-links">
+                    <a href="#ropa">Ver Ropa</a>
+                    <a href="#zapatos">Ver Zapatos</a>
+                </div>
             </header>
 
-            <section class="hero">
+            <section class="hero" id="ropa">
                 <div class="hero-text">
-                    <h1>CATÁLOGO <br> EXTERNO</h1>
+                    <h1>ROPA EN <br> TENDENCIA</h1>
                     <p>
-                        Explora productos de tendencia mundial <br>
-                        conectados directamente vía API.
+                        Explora la mejor ropa conectada <br>
+                        directamente vía API.
                     </p>
+                    <button class="more-btn">
+                        Ver más
+                    </button>
                 </div>
 
                 <div class="books">
-                    @forelse($resultados as $item)
+                    @foreach($ropa as $prenda)
                         <div class="book">
-                            <img src="{{ $item['category']['image'] ?? 'https://via.placeholder.com/150' }}" 
-                                alt="{{ $item['title'] }}"
-                                onerror="this.src='https://via.placeholder.com/150'">
-                            
-                            <h4>{{ $item['title'] }}</h4>
-                            <p class="price">${{ $item['price'] }}</p>
-                            <span class="category-badge">{{ $item['category']['name'] ?? 'General' }}</span>
+                            <img src="{{ $prenda['images'][0] ?? '' }}" alt="Imagen no disponible">
+                            <h4> {{ $prenda['title'] ?? 'Sin título' }}</h4>
+                            <p> {{ $prenda['category']['name'] ?? 'General' }} </p>
+                            <p class="price">$ {{ $prenda['price'] ?? '0' }}</p>
                         </div>
-                    @empty
-                        <div class="no-results">
-                            <p>No se encontraron productos con esos filtros.</p>
+                    @endforeach
+                </div>
+            </section>
+
+            <section class="hero" id="zapatos">
+                <div class="hero-text">
+                    <h1>CALZADO <br> EXCLUSIVO</h1>
+                    <p>
+                        Los mejores estilos en zapatos <br>
+                        actualizados en tiempo real.
+                    </p>
+                    <button class="more-btn">
+                        Ver más
+                    </button>
+                </div>
+
+                <div class="books">
+                    @foreach($zapatos as $zapato)
+                        <div class="book">
+                            <img src="{{ $zapato['images'][0] ?? '' }}" alt="Imagen no disponible">
+                            <h4> {{ $zapato['title'] ?? 'Sin título' }}</h4>
+                            <p> {{ $zapato['category']['name'] ?? 'General' }} </p>
+                            <p class="price">$ {{ $zapato['price'] ?? '0' }}</p>
                         </div>
-                    @endforelse
+                    @endforeach
                 </div>
             </section>
         </main>

@@ -1,0 +1,223 @@
+/* ===== BODY ===== */
+body {
+    background: rgb(178, 231, 208);
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+/* ===== CONTENEDOR PRINCIPAL ===== */
+.main-container {
+    display: flex;
+    min-height: 100vh; /* Ocupa toda la altura de la pantalla */
+    background: rgb(209, 243, 228);
+}
+
+/* ===== SIDEBAR IZQUIERDO ===== */
+.sidebar {
+    width: 260px;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    box-shadow: 2px 0 15px rgba(0,0,0,0.05);
+    box-sizing: border-box;
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+    gap: 10px;
+}
+
+.logo-container img {
+    width: 80px; /* Tamaño del logo ajustado */
+    height: auto;
+}
+
+.logo-container .logo {
+    font-size: 26px;
+    font-weight: bold;
+    color: #2f6f62;
+    margin: 0;
+    text-align: center;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1; /* Empuja el botón de cerrar sesión hacia abajo */
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: #5a4a3a;
+    font-weight: bold;
+    font-size: 16px;
+    transition: 0.3s;
+    padding: 12px 15px;
+    border-radius: 10px;
+}
+
+.sidebar a:hover {
+    background: rgba(47, 111, 98, 0.1);
+    color: #2f6f62;
+    transform: translateX(5px);
+}
+
+/* Botón de cerrar sesión al final del sidebar */
+.logout-container {
+    margin-top: auto;
+}
+
+.logout {
+    background: none;
+    border: none;
+    color: #d9534f;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    padding: 12px 15px;
+    width: 100%;
+    text-align: left;
+    font-family: inherit;
+}
+
+.logout:hover {
+    color: #c9302c;
+    background: rgba(217, 83, 79, 0.1);
+    border-radius: 10px;
+    transform: translateX(5px);
+}
+
+/* ===== CONTENIDO DERECHO ===== */
+.content {
+    flex: 1;
+    padding: 0 40px 40px;
+    box-sizing: border-box;
+}
+
+/* ===== TOPBAR (Menú rápido arriba a la derecha) ===== */
+.topbar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.menu-links {
+    display: flex;
+    gap: 20px;
+}
+
+.menu-links a {
+    text-decoration: none;
+    color: #5a4a3a;
+    font-weight: bold;
+    transition: 0.3s;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+}
+
+.menu-links a:hover {
+    background: #71beae;
+    color: white;
+}
+
+/* ===== SECCIÓN HERO ===== */
+.hero {
+    background: rgb(213, 234, 229);
+    padding: 40px;
+    border-radius: 25px;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.hero-text h1 {
+    font-size: 35px;
+    color: #5a4536;
+    margin-top: 0;
+}
+
+.hero-text p {
+    color: #9a8b7c;
+    max-width: 400px;
+    margin-bottom: 20px;
+}
+
+.more-btn {
+    background: #7aafa0;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    color: beige;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    align-self: flex-start;
+}
+
+.more-btn:hover {
+    background: #5c9d8c;
+    transform: scale(1.05);
+}
+
+/* ===== GRID PRODUCTOS ===== */
+.books {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+/* ===== CARD ===== */
+.book {
+    background: white;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.book:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.book img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.book h4 {
+    font-size: 15px;
+    margin: 12px 0 6px;
+    color: #333;
+}
+
+.book p {
+    font-size: 13px;
+    color: #777;
+    margin: 0 0 5px 0;
+}
+
+.book .price {
+    color: #2f6f62;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: auto; 
+}
