@@ -1,18 +1,16 @@
-/* ===== BODY ===== */
 body {
     background: rgb(178, 231, 208);
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
 }
 
-/* ===== CONTENEDOR PRINCIPAL ===== */
 .main-container {
     display: flex;
     min-height: 100vh; /* Ocupa toda la altura de la pantalla */
     background: rgb(209, 243, 228);
 }
 
-/* ===== SIDEBAR IZQUIERDO ===== */
+/* SIDEBAR IZQUIERDO */
 .sidebar {
     width: 260px;
     background: rgba(255, 255, 255, 0.6);
@@ -97,14 +95,12 @@ body {
     transform: translateX(5px);
 }
 
-/* ===== CONTENIDO DERECHO ===== */
 .content {
     flex: 1;
     padding: 0 40px 40px;
     box-sizing: border-box;
 }
 
-/* ===== TOPBAR (Menú rápido arriba a la derecha) ===== */
 .topbar {
     display: flex;
     justify-content: flex-end;
@@ -132,7 +128,7 @@ body {
     color: white;
 }
 
-/* ===== SECCIÓN HERO ===== */
+/*hero*/
 .hero {
     background: rgb(213, 234, 229);
     padding: 40px;
@@ -172,15 +168,14 @@ body {
     transform: scale(1.05);
 }
 
-/* ===== GRID PRODUCTOS ===== */
+/* productos*/
 .books {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: 25px;
     margin-top: 30px;
 }
-
-/* ===== CARD ===== */
+/*card*/
 .book {
     background: white;
     padding: 15px;

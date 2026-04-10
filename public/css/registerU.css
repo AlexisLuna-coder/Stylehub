@@ -1,12 +1,10 @@
-/* ===== FUENTE PREMIUM ===== */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');n/*nuevo tipo de letra*/
 
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
 }
 
-/* ===== CONTENEDOR GENERAL ===== */
 .register-wrapper {
     height: 100vh;
     display: flex;
@@ -16,14 +14,12 @@ body {
     background: linear-gradient(120deg, #1e2f2b, #2c3e50, #dcd7c9);
 }
 
-/* ===== LAYOUT ===== */
 .register-wrapper {
     display: flex;
     gap: 80px;
     padding: 40px;
 }
 
-/* ===== PLAYERA ===== */
 .shirt-side {
     display: flex;
     align-items: center;
@@ -40,7 +36,6 @@ body {
     transition: 0.4s;
 }
 
-/* HOVER PLAYERA */
 .shirt-img:hover {
     transform: scale(1.06) rotate(-1deg);
 }
@@ -52,7 +47,6 @@ body {
     100% { transform: translateY(0); }
 }
 
-/* ===== TARJETA ===== */
 .register-container {
     background: rgba(255,255,255,0.08);
     backdrop-filter: blur(18px);
@@ -72,14 +66,13 @@ body {
     transition: 0.3s;
 }
 
-/* HOVER TARJETA */
 .register-container:hover {
     transform: translateY(-6px);
     box-shadow: 
         0 40px 100px rgba(0,0,0,0.8);
 }
 
-/* ===== ANIMACIÓN ===== */
+/*otra animación*/
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -91,7 +84,6 @@ body {
     }
 }
 
-/* ===== TITULO ===== */
 .register-container h1 {
     text-align: center;
     color: #ffffff;
@@ -102,7 +94,6 @@ body {
     letter-spacing: 1px;
 }
 
-/* ===== INPUT GROUP ===== */
 .input-group {
     display: flex;
     align-items: center;
@@ -118,7 +109,7 @@ body {
 /* ICONO */
 .input-group span {
     padding: 12px;
-    color: #d4af37; /* dorado elegante */
+    color: #d4af37; /* dorado */
 }
 
 /* INPUT */
@@ -146,7 +137,6 @@ body {
     background: rgba(255,255,255,0.1);
 }
 
-/* ===== BOTÓN ===== */
 .btn-main {
     width: 100%;
     padding: 14px;
@@ -171,7 +161,6 @@ body {
     box-shadow: 0 0 25px rgba(212,175,55,0.7);
 }
 
-/* ===== TEXTO ===== */
 .register-container p {
     text-align: center;
     margin-top: 18px;
@@ -179,7 +168,6 @@ body {
     font-size: 14px;
 }
 
-/* ===== LINK MEJORADO ===== */
 .register-container a {
     color: #ffd700;
     font-weight: 600;

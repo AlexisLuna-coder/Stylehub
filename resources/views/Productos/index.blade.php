@@ -3,11 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CONSULTA DE USUARIOS - STYLEHUB</title>
+    <link rel="icon" type="image/jpg" href="{{ asset('/img/favicon.ico') }}"/>
+    <link rel="stylesheet" href="{{ asset('css/index.css') }}"> <!--ESTO ES PARA EL CSS -->
+
+    <title>CONSULTA DE PRODUCTOS - STYLEHUB</title>
 </head>
     <body>
         @extends('layouts.app')
         @section('content')
+        <div class="logo-container">
+                <img src="{{ asset('img/logo2-vestido-SF.png') }}" alt="Logo de Stylehub">
+            </div>
         <h1><center>CONSULTA DE PRODUCTOS - STYLEHUB</center></h1>
         <br>
         <div class="d-flex justify-content-end mb-2">
@@ -17,6 +23,14 @@
                         <button type="button" class="btn btn-outline-dark me-3">
                             <i class="fa-solid fa-plus"></i> Nuevo producto
                         </button>
+                    </a>
+                    <a href="{{ route('Ordenes.create') }}">
+                        <button type="button" class="btn btn-outline-dark me-3">
+                            <i class="fa-solid fa-plus"></i> Nueva venta
+                        </button>
+                    </a>
+                    <a href="{{ route('Usuario.profile') }}" class="btn btn-outline-dark me-3">
+                        Mi perfil
                     </a>
                 @endif
             @endauth

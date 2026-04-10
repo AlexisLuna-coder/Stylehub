@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Productos;
 
 class Ordenes extends Model
 {
@@ -23,5 +24,12 @@ class Ordenes extends Model
     public function user()
     {
         return $this->belongsTo(\App\Models\User::class);
+    }
+    public function productos()
+    {
+        /* * belongsToMany conecta Ordenes con Productos a través de la tabla de detalles.
+         * Parámetros: (Modelo Relacionado, Nombre de la tabla intermedia, Llave foránea de este modelo, Llave foránea del otro modelo)
+         */
+        return $this->belongsToMany(Productos::class, 'detalle_ordens', 'orden_id', 'producto_id');
     }
 }

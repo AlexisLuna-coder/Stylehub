@@ -1,0 +1,237 @@
+body, #app, main, .py-4 {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+}
+
+body {
+    background: url('/storage/fondos/productosFondo.png') no-repeat center center fixed !important;
+    background-size: cover !important;
+    font-family: 'Instrument Sans', 'Poppins', sans-serif;
+    min-height: 100vh;
+    color: #ffffff !important;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(11, 37, 69, 0.85) !important; /* Azul marino muy oscuro */
+    z-index: -1;
+}
+
+/* Container principal ajustado */
+.container, main.py-4 > .container {
+    max-width: 1400px !important;
+    margin: 0 auto !important;
+    padding: 40px 20px !important;
+}
+
+/*logo*/
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.logo-container img {
+    height: 75px;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
+}
+
+h1 center {
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 28px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+    margin-top: 15px;
+}
+
+hr {
+    border-top: 1px solid rgba(212, 175, 55, 0.4) !important;
+    margin-bottom: 30px;
+}
+
+.d-flex.justify-content-end form {
+    margin: 0 !important;
+}
+
+.btn-outline-dark, .btn-outline-secondary {
+    border: 1px solid #d4af37 !important;
+    color: #d4af37 !important;
+    background: rgba(212, 175, 55, 0.1) !important;
+    border-radius: 8px !important;
+    font-weight: bold !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease !important;
+    padding: 10px 20px !important;
+}
+
+.btn-outline-dark:hover, .btn-outline-secondary:hover {
+    background: #d4af37 !important;
+    color: #0B2545 !important;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.5) !important;
+    transform: translateY(-2px);
+}
+
+.btn-outline-danger {
+    border: 1px solid #ff6b6b !important;
+    color: #ff6b6b !important;
+    background: rgba(255, 107, 107, 0.1) !important;
+    border-radius: 8px !important;
+    font-weight: bold !important;
+    text-transform: uppercase;
+    transition: all 0.3s ease !important;
+    padding: 10px 20px !important;
+}
+
+.btn-outline-danger:hover {
+    background: #ff6b6b !important;
+    color: white !important;
+    box-shadow: 0 0 15px rgba(255, 107, 107, 0.5) !important;
+    transform: translateY(-2px);
+}
+
+table.table-striped tbody tr:nth-of-type(odd),
+table.table-hover tbody tr:hover,
+.table {
+    background-color: transparent !important;
+    --bs-table-bg: transparent !important;
+    --bs-table-accent-bg: transparent !important;
+    --bs-table-striped-bg: transparent !important;
+    --bs-table-active-bg: transparent !important;
+    --bs-table-hover-bg: transparent !important;
+    color: white !important;
+}
+
+.table {
+    border-collapse: separate !important; 
+    border-spacing: 0 20px !important; 
+    border: none !important;
+    margin-bottom: 50px !important;
+}
+
+/* Títulos de las columnas */
+.table thead th {
+    border: none !important;
+    color: #d4af37 !important; /* Títulos dorados para que destaquen */
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    padding: 0 20px 10px 20px !important;
+    font-weight: 700;
+}
+
+.table tbody tr {
+    background: rgba(0, 0, 0, 0.4) !important; 
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    transition: all 0.3s ease !important;
+}
+
+.table tbody tr:hover {
+    transform: translateY(-5px) scale(1.01) !important; 
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.25) !important; /* Brillo dorado al hacer hover */
+    background: rgba(0, 0, 0, 0.6) !important; 
+    border: 1px solid rgba(212, 175, 55, 0.3) !important;
+}
+
+/* Celdas de la tarjeta */
+.table tbody td {
+    border: none !important;
+    padding: 20px 25px !important;
+    vertical-align: middle !important;
+    color: #f8f9fa !important; /* Texto claro */
+    font-size: 0.95rem;
+}
+
+/* Esquinas redondeadas*/
+.table tbody td:first-child { 
+    border-radius: 15px 0 0 15px !important; 
+    color: #d4af37 !important; 
+    font-weight: 800;
+    font-size: 1.2rem;
+}
+.table tbody td:last-child { 
+    border-radius: 0 15px 15px 0 !important; 
+}
+
+.table tbody td img {
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+    border: 2px solid rgba(212, 175, 55, 0.5);
+    width: 80px; 
+    height: 80px;
+    object-fit: cover;
+    transition: 0.3s;
+}
+.table tbody td img:hover {
+    transform: scale(1.1); 
+}
+
+.badge {
+    padding: 8px 12px !important;
+    border-radius: 30px !important;
+    letter-spacing: 1px;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    font-size: 0.75rem !important;
+}
+
+.bg-success { 
+    background: rgba(40, 167, 69, 0.15) !important; 
+    border: 1px solid rgba(40, 167, 69, 0.5) !important; 
+    color: #4dd574 !important; 
+}
+.bg-danger { 
+    background: rgba(220, 53, 69, 0.15) !important; 
+    border: 1px solid rgba(220, 53, 69, 0.5) !important; 
+    color: #ff7675 !important; 
+}
+.bg-warning { 
+    background: rgba(253, 126, 20, 0.15) !important; 
+    border: 1px solid rgba(253, 126, 20, 0.5) !important; 
+    color: #ffcd56 !important; 
+}
+
+.table tbody td .btn {
+    display: block;
+    width: 100%;
+    margin-bottom: 8px;
+    padding: 8px 15px !important;
+    font-size: 0.85rem !important;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 8px !important;
+    transition: 0.3s !important; 
+}
+
+.btn-warning { 
+    background: rgba(212, 175, 55, 0.15) !important; 
+    border: 1px solid rgba(212, 175, 55, 0.5) !important; 
+    color: #d4af37 !important; 
+}
+.btn-warning:hover { 
+    background: #d4af37 !important; 
+    color: #0B2545 !important; 
+}
+
+.table tbody td .btn-danger { 
+    background: rgba(220, 53, 69, 0.15) !important; 
+    border: 1px solid rgba(220, 53, 69, 0.5) !important; 
+    color: #ff7675 !important; 
+    margin-bottom: 0;
+}
+.table tbody td .btn-danger:hover { 
+    background: #dc3545 !important; 
+    color: white !important; 
+}
+
+.d-inline { display: block !important; }

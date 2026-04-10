@@ -104,6 +104,8 @@ class AuthController extends Controller
 
         return view('admin.dashboard', compact('users','gerentes','trabajadores','clientes'));
     }
+
+    
 }
 
 

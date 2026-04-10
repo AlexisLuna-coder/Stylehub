@@ -1,0 +1,195 @@
+body, #app, main, .py-4, table, tbody tr, tbody td {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+body {
+    background: url('/storage/fondos/ordenesFondo.png') no-repeat center center fixed !important;
+    background-size: cover !important;
+    font-family: 'Instrument Sans', 'Segoe UI', sans-serif;
+    min-height: 100vh;
+    color: #333333; 
+    display: flex !important;
+    justify-content: center !important; 
+    align-items: center !important; 
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(30, 20, 10, 0.3) !important;
+    z-index: -1;
+}
+
+aside.sidebar, .sidebar { display: none !important; }
+.main-container, .content { margin: 0 !important; width: 100% !important; display: flex; justify-content: center; align-items: center; min-height: 100vh;}
+
+.wrap-orders {
+    width: 95% !important;
+    max-width: 1400px !important;
+    margin: 40px auto !important;
+    padding: 40px 50px !important;
+    
+    background: rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15) !important;
+    animation: fadeUp 0.6s ease;
+    z-index: 10;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/*loogoos*/
+.logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-container img { height: 70px !important; width: auto !important; margin-bottom: 5px; }
+.logo-container .logo { color: #D4AF37; letter-spacing: 4px; font-weight: bold; font-size: 24px; text-transform: uppercase; margin: 0; }
+
+h1 center {
+    color: #1a1a1a !important;
+    margin-bottom: 30px !important;
+    font-size: 1.8rem !important;
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(212, 175, 55, 0.5);
+}
+
+hr { display: none; }
+
+.top-bar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.ganancias-box {
+    background: rgba(212, 175, 55, 0.15) !important; 
+    border: 2px solid rgba(212, 175, 55, 0.6) !important;
+    border-radius: 15px;
+    padding: 12px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.ganancias-box .titulo { font-size: 0.8rem; color: #444; letter-spacing: 2px; font-weight: 700; }
+.ganancias-box .monto { font-size: 1.8rem; color: #b8860b; font-weight: 900; margin-top: 2px; }
+
+.botones-box { display: flex; gap: 15px; }
+.btn-outline-dark, .btn-outline-secondary {
+    border: 2px solid #1a1a1a !important;
+    color: #1a1a1a !important;
+    background: transparent !important;
+    border-radius: 10px !important;
+    font-weight: bold !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.3s !important;
+    padding: 12px 25px !important;
+}
+.btn-outline-dark:hover, .btn-outline-secondary:hover {
+    background-color: #1a1a1a !important;
+    color: #D4AF37 !important;
+}
+
+.table {
+    border-collapse: separate !important; 
+    border-spacing: 0 12px !important; 
+    width: 100% !important;
+    margin-bottom: 20px !important;
+}
+
+.table thead { display: table-header-group !important; }
+.table thead th {
+    color: #555555 !important;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 800;
+    padding: 0 20px 10px 20px !important;
+    border: none !important;
+    border-bottom: 1px solid rgba(0,0,0,0.1) !important;
+}
+
+.table tbody tr {
+    background-color: #ffffff !important; 
+    border-radius: 12px !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05) !important;
+    transition: 0.3s !important;
+    display: table-row !important;
+}
+.table tbody tr:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.2) !important; 
+}
+
+.table tbody td {
+    padding: 18px 20px !important;
+    vertical-align: middle !important;
+    color: #333333 !important; 
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+.table tbody td:first-child { border-radius: 12px 0 0 12px !important; color: #D4AF37 !important; font-weight: 900; font-size: 1.1rem; }
+.table tbody td:last-child { border-radius: 0 12px 12px 0 !important; }
+
+/* Tipografía de datos */
+.table tbody td strong { color: #0B2545; font-weight: 800; }
+.table tbody td.text-warning { color: #b8860b !important; font-weight: 900; font-size: 1.05rem;}
+
+.badge {
+    padding: 8px 12px !important;
+    border-radius: 8px !important;
+    font-weight: 800 !important;
+    text-transform: uppercase;
+    font-size: 0.75rem !important;
+    letter-spacing: 1px;
+}
+.bg-success { background-color: #27ae60 !important; color: white !important; }
+.bg-danger { background-color: #e74c3c !important; color: white !important; }
+.bg-primary { background-color: #2980b9 !important; color: white !important; }
+
+.bg-warning { background-color: #f1c40f !important; color: #1a1a1a !important; } 
+
+.btn-warning { 
+    background-color: transparent !important; 
+    border: 2px solid #D4AF37 !important; 
+    color: #D4AF37 !important; 
+    padding: 8px 12px !important;
+    border-radius: 8px !important;
+    transition: 0.3s !important; 
+}
+.btn-warning:hover { background-color: #D4AF37 !important; color: #fff !important; }
+
+.btn-danger { 
+    background-color: transparent !important; 
+    border: 2px solid #e74c3c !important; 
+    color: #e74c3c !important; 
+    padding: 8px 12px !important;
+    border-radius: 8px !important;
+    transition: 0.3s !important; 
+}
+.btn-danger:hover { background-color: #e74c3c !important; color: white !important; }
+
+.d-inline { display: inline-flex !important; gap: 5px;}

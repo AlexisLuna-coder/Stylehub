@@ -31,6 +31,18 @@
 
     //SOLAMENTE USUARIOS AUTENTICADOS (clientes, admin, trabajadores,...)
     Route::middleware(['auth'])->group(function () {
+
+        // user
+        // Mostrar el perfil del usuario autenticado
+        Route::get('/mi-perfil', [
+            UserController::class, 'userProfile'
+        ])->name('Usuario.profile');
+
+        // Actualizar contraseña desde el perfil
+        Route::put('/mi-perfil/password', [
+            UserController::class, 'updatePassword'
+        ])->name('Usuario.password');
+
         // PRODUCTOS (todos entran, PERO controlas en vista/controller)
         Route::resource('Productos', ProductosController::class);
         // ORDENES (todos pueden usar)

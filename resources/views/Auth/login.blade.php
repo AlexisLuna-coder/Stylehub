@@ -6,6 +6,7 @@
 
     <!-- FORMA DE LLAMAR RECURSOS DESDE LARAVEL -->
     <link rel="stylesheet" href=" {{ asset('css/login.css') }}"> <!-- LLAMADA A CSS DEL LOGIN -->
+    <link rel="icon" type="image/jpg" href="{{ asset('/img/favicon.ico') }}"/>
     <title>Inicio de sesión</title>
 </head>
 <body>

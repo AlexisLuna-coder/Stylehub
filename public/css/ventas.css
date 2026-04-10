@@ -1,0 +1,201 @@
+body, #app, main, .py-4 {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+}
+
+body {
+    background: 
+        linear-gradient(rgba(5, 10, 25, 0.7), rgba(5, 10, 25, 0.85)),
+        url('/storage/fondos/ordenesFondo.png') no-repeat center center fixed !important;
+    background-size: cover !important;
+    font-family: 'Instrument Sans', 'Poppins', sans-serif;
+    min-height: 100vh;
+    display: flex !important;
+    justify-content: center !important; 
+    align-items: center !important; 
+}
+
+aside.sidebar, .sidebar { display: none !important; }
+.main-container, .content { margin: 0 !important; width: 100% !important; display: flex; justify-content: center; align-items: center; min-height: 100vh;}
+
+.ventas-wrapper {
+    width: 95% !important;
+    max-width: 1000px !important; 
+    margin: 40px auto !important;
+    padding: 40px 50px !important;
+    
+    background: rgba(255, 255, 255, 0.08) !important;
+    backdrop-filter: blur(25px) !important;
+    -webkit-backdrop-filter: blur(25px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 20px !important;
+    
+    box-shadow: 0 25px 70px rgba(0,0,0,0.6), inset 0 0 15px rgba(255,255,255,0.05) !important;
+    animation: fadeUp 0.8s ease;
+    z-index: 10;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-container img { height: 60px !important; margin-bottom: 5px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.5)); }
+.logo-container .logo { color: #d4af37; letter-spacing: 4px; font-weight: bold; font-size: 22px; text-transform: uppercase; margin: 0; }
+
+h1 {
+    text-align: center; color: white !important; margin-bottom: 30px !important;
+    font-size: 1.5rem !important; font-weight: bold; letter-spacing: 2px; text-transform: uppercase;
+}
+
+h4 {
+    color: #d4af37; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 2px;
+    margin-bottom: 15px; border-bottom: 1px solid rgba(212, 175, 55, 0.3); padding-bottom: 10px;
+}
+
+.columna-izquierda {
+    padding-right: 30px !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.15); 
+}
+
+.columna-derecha {
+    padding-left: 30px !important;
+}
+
+@media (max-width: 768px) {
+    .columna-izquierda { padding-right: 15px !important; border-right: none; 
+        border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom: 20px; margin-bottom: 20px;}
+    .columna-derecha { padding-left: 15px !important; }
+}
+
+label {
+    color: #f5d76e;
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+    display: block;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.form-control, select.form-control {
+    width: 100% !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    color: #222 !important;
+    border: 1px solid rgba(255,255,255,0.5) !important;
+    padding: 12px 15px !important;
+    font-size: 14px !important;
+    border-radius: 10px !important;
+    transition: all 0.3s ease !important;
+}
+
+.form-control:focus {
+    border-color: #d4af37 !important;
+    box-shadow: 0 0 15px rgba(212,175,55,0.6) !important;
+    background: #ffffff !important;
+    outline: none !important;
+}
+
+select.form-control option { background-color: #0B2545; color: white; }
+
+/* Checkbox Dorado */
+.form-check { display: flex; align-items: center; margin-top: 10px; }
+.form-check-input { width: 18px; height: 18px; cursor: pointer; accent-color: #d4af37; margin-right: 10px; }
+.form-check-label { margin: 0; color: white; font-size: 0.85rem; cursor: pointer; }
+
+.lista-productos-scroll {
+    max-height: 280px; 
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+/* Scrollbar dorada de la lista */
+.lista-productos-scroll::-webkit-scrollbar { width: 5px; }
+.lista-productos-scroll::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 10px; }
+
+.producto-item {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 10px 15px !important;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 10px !important;
+    transition: 0.3s;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.producto-item:hover {
+    background: rgba(0, 0, 0, 0.6);
+    border-color: #d4af37;
+}
+
+.nombre-prod { color: white; font-size: 0.9rem; font-weight: 500; display: block;}
+.precio-prod { color: #d4af37; font-size: 0.85rem; font-weight: bold; }
+
+.input-cantidad {
+    text-align: center !important;
+    padding: 8px !important;
+    font-weight: bold !important;
+    font-size: 16px !important;
+}
+
+.btn-success {
+    width: 100% !important;
+    padding: 12px !important;
+    border: none !important;
+    border-radius: 10px !important;
+    background: linear-gradient(45deg, #d4af37, #f5d76e) !important;
+    color: #0B2545 !important;
+    font-weight: bold !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer !important;
+    transition: 0.3s !important;
+}
+
+.btn-success:hover {
+    transform: scale(1.03) !important;
+    box-shadow: 0 0 20px rgba(212,175,55,0.6) !important;
+}
+
+.btn-dark {
+    display: block !important;
+    text-align: center !important;
+    width: 100% !important;
+    padding: 10px !important;
+    border-radius: 10px !important;
+    text-decoration: none !important;
+    border: 1px solid rgba(255,255,255,0.6) !important;
+    background: transparent !important;
+    color: white !important;
+    font-weight: bold !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.3s !important;
+}
+
+.btn-dark:hover {
+    background: white !important;
+    color: #0B2545 !important;
+}
+
+.producto-inactivo {
+    opacity: 0.5;
+    background: rgba(0, 0, 0, 0.1) !important;
+    border-color: transparent !important;
+}
+
+.producto-inactivo:hover {
+    background: rgba(0, 0, 0, 0.1) !important;
+    border-color: transparent !important;
+    transform: none !important; 
+}

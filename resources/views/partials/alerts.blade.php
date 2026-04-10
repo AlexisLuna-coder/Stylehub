@@ -3,7 +3,7 @@
 <!-- ESTA SESIÓN MOSTARÁ LAAS ALERTAS DE EXITO -->
 @if(session('success'))
     <div class="alert alert-success alert-dismissible fade show alerta-auto">
-        <strong>✔ ¡Éxito!</strong> {{ session('success') }}
+        <strong>¡Éxito!</strong> {{ session('success') }}
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
 @endif
@@ -18,7 +18,7 @@
 <!-- ESTA SESIÓN MOSTARÁ LAAS ALERTAS DE ADVERTENCIA -->
 @if(session('warning'))
     <div class="alert alert-warning alert-dismissible fade show alerta-auto">
-        <strong>Advertencia!</strong> {{ session('warning') }}
+        <strong>¡Advertencia!</strong> {{ session('warning') }}
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
 @endif
