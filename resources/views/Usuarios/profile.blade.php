@@ -44,7 +44,7 @@
                         <i class="fa-solid fa-gear settings-icon"></i>
                         <div class="settings-buttons">
                             <a href="{{ route('home') }}" class="btn btn-outline-dark">
-                            <i class="fa-solid fa-house me-2"></i> Inicio
+                                <i class="fa-solid fa-house me-2"></i> Inicio
                             </a>
 
                             <a href="{{ route('Usuarios.edit', auth()->user()->id) }}" class="btn btn-outline-dark">

@@ -35,7 +35,7 @@
                     <a href="{{ route('Ordenes.create') }}" class="btn btn-outline-dark me-2">
                         <i class="fa-solid fa-plus"></i> Nueva Orden
                     </a>
-                    <a href="{{ route('Productos.index') }}" class="btn btn-outline-secondary">
+                    <a href="{{ route('Productos.index') }}" class="btn btn-outline-secondary me-2">
                         <i class="fa-solid fa-boxes-stacked"></i> Ver Productos
                     </a>
 

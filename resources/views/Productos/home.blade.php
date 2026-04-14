@@ -70,10 +70,14 @@
                 <div class="books">
                     @foreach($ropa as $prenda)
                         <div class="book">
-                            <img src="{{ $prenda['images'][0] ?? '' }}" alt="Imagen no disponible">
-                            <h4>{{ $prenda['title'] ?? 'Sin título' }}</h4>
-                            <p>{{ $prenda['category']['name'] ?? 'General' }}</p>
-                            <p class="price">$ {{ $prenda['price'] ?? '0' }}</p>
+                            <div class="book-img-wrapper">
+                                <img src="{{ $prenda['images'][0] }}" 
+                                    onerror="this.src='https://placehold.co/600x400?text=StyleHub';" 
+                                    alt="{{ $prenda['title'] }}">
+                            </div>
+                            <h4>{{ Str::limit($prenda['title'], 20) }}</h4>
+                            <p>{{ $prenda['category']['name'] }}</p>
+                            <p class="price">$ {{ number_format($prenda['price'], 2) }}</p>
                         </div>
                     @endforeach
                 </div>
@@ -89,10 +93,14 @@
                 <div class="books">
                     @foreach($zapatos as $zapato)
                         <div class="book">
-                            <img src="{{ $zapato['images'][0] ?? '' }}" alt="Imagen no disponible">
-                            <h4>{{ $zapato['title'] ?? 'Sin título' }}</h4>
-                            <p>{{ $zapato['category']['name'] ?? 'General' }}</p>
-                            <p class="price">$ {{ $zapato['price'] ?? '0' }}</p>
+                            <div class="book-img-wrapper">
+                                <img src="{{ $zapato['images'][0] }}" 
+                                    onerror="this.src='https://placehold.co/600x400?text=StyleHub';" 
+                                    alt="{{ $zapato['title'] }}">
+                            </div>
+                            <h4>{{ Str::limit($zapato['title'], 20) }}</h4>
+                            <p>{{ $zapato['category']['name'] }}</p>
+                            <p class="price">$ {{ number_format($zapato['price'], 2) }}</p>
                         </div>
                     @endforeach
                 </div>
