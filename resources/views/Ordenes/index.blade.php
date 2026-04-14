@@ -27,6 +27,10 @@
                     <span class="monto">${{ number_format($ordenes->sum('total'), 2) }}</span>
                 </div>
 
+                <a href="{{ route('home') }}" class="btn btn-outline-dark">
+                            <i class="fa-solid fa-house me-2"></i> Inicio
+                            </a>
+
                 <div class="botones-box">
                     <a href="{{ route('Ordenes.create') }}" class="btn btn-outline-dark me-2">
                         <i class="fa-solid fa-plus"></i> Nueva Orden
@@ -35,7 +39,7 @@
                         <i class="fa-solid fa-boxes-stacked"></i> Ver Productos
                     </a>
 
-                    <a href="{{ route('Usuario.profile') }}" class="btn-acceder">
+                    <a href="{{ route('Usuario.profile') }}" class="btn btn-outline-secondary me-2">
                         Mi perfil
                     </a>
                 </div>

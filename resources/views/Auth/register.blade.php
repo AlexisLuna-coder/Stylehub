@@ -16,7 +16,7 @@
     <div class="register-wrapper">
         <!-- IMAGEN PLAYERA -->
         <div class="shirt-side">
-            <img src="{{ asset('/storage/fondos/PlayeraRegister.png') }}" class="shirt-img">
+            <img src="{{ asset('/img/PlayeraRegister.png') }}" class="shirt-img">
         </div>
         <!-- FORMULARIO -->
         <div class="register-container">

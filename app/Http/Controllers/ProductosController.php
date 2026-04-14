@@ -118,9 +118,9 @@ class ProductosController extends Controller
             'offset' => 0,
             'limit' => 16 // Traemos hasta 16 prendas
         ])->json() ?? [];
-        // Petición estricta para obtener Zapatos (Shoes -> ID: 4)
+        // Petición estricta para obtener Zapatos (Shoes -> ID: 13)
         $zapatos = Http::get('https://api.escuelajs.co/api/v1/products', [
-            'categoryId' => 4,
+            'categoryId' => 13,
             'offset' => 0,
             'limit' => 10 // Traemos hasta 10 zapatos
         ])->json() ?? [];

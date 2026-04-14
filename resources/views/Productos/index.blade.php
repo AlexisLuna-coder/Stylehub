@@ -36,6 +36,11 @@
             @endauth
             <form action=" {{ route('cerrar') }}" method="POST"> 
                 @csrf 
+
+                <a href="{{ route('home') }}" class="btn btn-outline-dark">
+                            <i class="fa-solid fa-house me-2"></i> Inicio
+                            </a>
+
                 <button class="btn btn-outline-danger me-3"> 
                     <i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar sesión 
                 </button> 
